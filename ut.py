@@ -3,16 +3,15 @@
 """Unix Time Converter.
 Synopsis: <trigger> <filter>"""
 
-from albertv0 import *
+from albert import *
 from datetime import datetime
 from dateutil import parser
 import time
 
-__iid__ = "PythonInterface/v0.2"
-__prettyname__ = "Unix Time Converter"
-__version__ = "1.0"
-__trigger__ = "ut "
-__author__ = "Dmitry Kolosov"
+__title__ = "Unix Time Converter"
+__version__ = "0.4.1"
+__triggers__ = "ut "
+__authors__ = "Dmitry Kolosov"
 __dependencies__ = ['python-dateutil']
 
 def handleQuery(query):
@@ -51,7 +50,7 @@ def handleQuery(query):
 
 def getDatetimeItem(dt):
     dtString = dt.strftime("%Y-%m-%d %H:%M:%S")
-    return Item(id=__prettyname__,
+    return Item(id=__title__,
         text=dtString,
         subtext="Date Time",
         completion=dtString,
@@ -62,7 +61,7 @@ def getDatetimeItem(dt):
 
 def getTimestampItem(ts):
     ts = str(int(ts))
-    return Item(id=__prettyname__,
+    return Item(id=__title__,
         text=ts,
         subtext="UTC Timestamp",
         completion=ts,
@@ -79,3 +78,4 @@ def parseDateTime(dtString):
 def parseTimestamp(ts):
     dt = datetime.fromtimestamp(int(ts))
     return getDatetimeItem(dt)
+    
